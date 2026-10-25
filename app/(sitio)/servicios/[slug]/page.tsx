@@ -25,6 +25,7 @@ export async function generateMetadata(
       title: service.seoTitle,
       description: service.seoDescription,
       url: `/servicios/${service.slug}`,
+      images: [{ url: "/marca/compartir.png", width: 1200, height: 1200, alt: "Vita Dentis" }],
     },
   };
 }

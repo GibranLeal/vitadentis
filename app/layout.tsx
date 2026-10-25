@@ -36,9 +36,19 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_MX",
     siteName: "Vita Dentis",
-    images: [{ url: "/marca/consultorio.webp", width: 1024, height: 1536 }],
+    images: [
+      {
+        url: "/marca/compartir.png",
+        width: 1200,
+        height: 1200,
+        alt: "Vita Dentis",
+      },
+    ],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: {
+    card: "summary",
+    images: ["/marca/compartir.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
