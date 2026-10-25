@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-navy: #12203d;
+  --color-aqua: #29b6c8;
+  --color-aqua-light: #6fe3d8;
+  --color-purple: #6b4a9e;
+  --color-lavender: #b9a6e3;
+  --color-blue: #2f5fb8;
+  --color-ink: #41506e;
+  --color-line: #e3e7ef;
+  --color-canvas: #f5f6fa;
+  --color-aqua-mist: #eaf7f9;
+  --color-purple-mist: #f1edf9;
+  --font-sans: var(--font-karla), sans-serif;
+  --font-display: var(--font-sora), sans-serif;
+  --font-mono: var(--font-plex), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  color-scheme: light;
+}
+
+::selection {
+  background: #b9a6e3;
+  color: #12203d;
+}
+
+:focus-visible {
+  outline: 2px solid #29b6c8;
+  outline-offset: 3px;
+}
+
+.brand-gradient {
+  background-image: linear-gradient(
+    165deg,
+    #2a7fc9 0%,
+    #2f5fb8 40%,
+    #4b4aa6 75%,
+    #5b3e96 100%
+  );
+}
+
+.text-brand {
+  background-image: linear-gradient(90deg, #29b6c8, #6b4a9e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.team-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 58%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 58%, rgba(0, 0, 0, 0.55) 78%, transparent 100%);
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
