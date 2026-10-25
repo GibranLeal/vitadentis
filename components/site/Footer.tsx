@@ -8,16 +8,16 @@ export function Footer({ compact = false }: { compact?: boolean }) {
       <div className="mx-auto max-w-6xl px-5 py-14">
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <div className="inline-flex rounded-2xl bg-white px-3 py-2">
+            <Link href="/" aria-label="Vita Dentis, inicio">
               <Image
-                src="/marca/logo.webp"
+                src="/marca/logo-blanco.webp"
                 alt="Vita Dentis"
-                width={1600}
-                height={716}
-                className="h-12 w-auto"
+                width={1024}
+                height={457}
+                className="h-16 w-auto"
                 style={{ width: "auto" }}
               />
-            </div>
+            </Link>
             <p className="mt-5 max-w-sm text-white/80">
               La vitalidad de tu sonrisa. Odontología integral y estética en Metepec.
             </p>
