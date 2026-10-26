@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  images: {
+    // En Hostinger /_next/image responde 503. Los archivos de public/ sí cargan.
+    unoptimized: true,
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
