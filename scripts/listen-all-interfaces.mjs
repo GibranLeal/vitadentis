@@ -1,7 +1,9 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { cp, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const file = path.join(process.cwd(), ".next/standalone/server.js");
+const root = process.cwd();
+const standalone = path.join(root, ".next/standalone");
+const file = path.join(standalone, "server.js");
 
 let source;
 try {
@@ -23,3 +25,13 @@ if (next === source) {
 
 await writeFile(file, next);
 console.log("El servidor escuchará en 0.0.0.0.");
+
+// El servidor standalone no incluye estos directorios. Sin ellos el HTML
+// responde y el CSS, el JavaScript y public/ devuelven 404.
+await cp(path.join(root, "public"), path.join(standalone, "public"), {
+  recursive: true,
+});
+await cp(path.join(root, ".next/static"), path.join(standalone, ".next/static"), {
+  recursive: true,
+});
+console.log("Se copiaron public/ y .next/static al servidor standalone.");
