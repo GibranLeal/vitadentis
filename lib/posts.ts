@@ -68,11 +68,11 @@ const library: Post[] = [
       },
       {
         type: "h2",
-        text: "Para quién es el consultorio",
+        text: "A quién atendemos",
       },
       {
         type: "p",
-        text: "Para quien quiere una limpieza a tiempo, para quien trae a sus hijos, para quien por fin va a preguntar por una muela que duele y para quien busca mejorar la sonrisa sin saltarse el diagnóstico. La estética importa, y también importa que el diente esté sano debajo.",
+        text: "Atendemos a pacientes de todas las edades. La consulta puede ser una limpieza preventiva, una revisión infantil, la valoración de un dolor dental o un tratamiento para mejorar la sonrisa. En todos los casos el diagnóstico va primero: la estética se considera cuando el diente está sano.",
       },
       {
         type: "note",
