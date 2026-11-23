@@ -19,7 +19,7 @@ export function Footer({ compact = false }: { compact?: boolean }) {
               />
             </Link>
             <p className="mt-5 max-w-sm text-white/80">
-              La vitalidad de tu sonrisa. Odontología integral y estética en Metepec.
+              Sonrisas saludables, vidas más felices. Tu sonrisa, nuestra pasión.
             </p>
             <p className="eyebrow mt-6 text-aqua-light">Afiliado IUEM</p>
             <p className="mt-2 text-sm text-white/75">
@@ -80,7 +80,7 @@ export function Footer({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm text-white/65 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Vita Dentis. Metepec, Estado de México.</p>
+          <p>© 2026 VitaDentis. Metepec, Estado de México.</p>
           <div className="flex flex-wrap gap-4">
             <Link href="/aviso-de-privacidad" className="hover:text-white">
               Aviso de privacidad

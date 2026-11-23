@@ -101,18 +101,84 @@ export const social = {
   facebookName: "Vita Dentis",
 };
 
+export const brand = {
+  name: "VitaDentis",
+  kind: "Consultorio dental",
+  tagline: "Sonrisas saludables, vidas más felices.",
+  passion: "Tu sonrisa, nuestra pasión.",
+  line: "Salud dental, confianza y bienestar en cada sonrisa.",
+};
+
+export const about = {
+  who: [
+    "VitaDentis es un consultorio dental comprometido con el cuidado de la salud bucal y el bienestar integral de nuestros pacientes. Somos un espacio donde combinamos profesionalismo, conocimiento, tecnología y atención humana para ofrecer tratamientos odontológicos de calidad.",
+    "Creemos que cada sonrisa es única y merece atención personalizada. Por ello, nos enfocamos en escuchar, comprender y atender las necesidades de cada paciente, brindando soluciones que contribuyan a mejorar su salud, estética dental y calidad de vida.",
+  ],
+  offerLead:
+    "En VitaDentis brindamos una atención odontológica integral, enfocada en la prevención, diagnóstico y tratamiento de las enfermedades y alteraciones de la salud bucal.",
+  objective:
+    "Nuestro objetivo es mejorar la salud bucal y la calidad de vida de nuestros pacientes mediante tratamientos odontológicos integrales, accesibles y de calidad, generando experiencias positivas que fortalezcan su confianza y les permitan sonreír con seguridad.",
+  mission: [
+    "Brindar servicios odontológicos de excelencia a través de una atención profesional, ética, cálida y personalizada, utilizando conocimientos actualizados y recursos adecuados para cuidar la salud bucal de nuestros pacientes.",
+    "En VitaDentis buscamos construir relaciones de confianza, promoviendo la prevención, el bienestar y la satisfacción de cada persona que deposita su sonrisa en nuestras manos.",
+  ],
+  vision: [
+    "Ser un consultorio dental reconocido por su calidad de atención, profesionalismo, innovación y compromiso con la salud bucal, consolidándonos como una clínica de referencia para las familias y pacientes que buscan confianza, resultados y bienestar.",
+    "Aspiramos a crecer continuamente, mejorar nuestros servicios y convertirnos en un espacio donde cada paciente encuentre una razón para sonreír.",
+  ],
+  philosophy: [
+    "En VitaDentis creemos que la odontología va más allá de cuidar dientes: se trata de cuidar personas, recuperar sonrisas, fortalecer la autoestima y contribuir a una vida más saludable.",
+    "No solamente tratamos sonrisas, cuidamos personas.",
+  ],
+};
+
 export const reasons = [
   {
-    title: "Atención cercana",
-    text: "Te recibimos por tu nombre y con tiempo para escucharte. La visita no es una fila de prisas.",
+    title: "Atención personalizada",
+    text: "Escuchamos sus necesidades y diseñamos planes de tratamiento de acuerdo con cada caso.",
   },
   {
-    title: "Explicamos cada paso",
-    text: "Antes de proponer un tratamiento te decimos qué vemos, por qué importa y qué alternativas hay.",
+    title: "Prevención y educación",
+    text: "Promovemos hábitos saludables para conservar una sonrisa sana.",
   },
   {
-    title: "Para toda la familia",
-    text: "Desde la primera revisión de los niños hasta el cuidado de los adultos, en el mismo consultorio.",
+    title: "Calidad en los tratamientos",
+    text: "Trabajamos con responsabilidad, profesionalismo y materiales adecuados.",
+  },
+  {
+    title: "Estética dental",
+    text: "Buscamos mejorar la armonía y apariencia de cada sonrisa.",
+  },
+  {
+    title: "Confianza y tranquilidad",
+    text: "Procuramos que cada visita sea una experiencia cómoda, segura y agradable.",
+  },
+  {
+    title: "Acompañamiento profesional",
+    text: "Orientamos a nuestros pacientes durante las diferentes etapas de su tratamiento.",
+  },
+];
+
+export const values = [
+  {
+    title: "Compromiso",
+    text: "Nos responsabilizamos del cuidado y bienestar de cada paciente.",
+  },
+  {
+    title: "Honestidad",
+    text: "Ofrecemos diagnósticos y alternativas de tratamiento con transparencia.",
+  },
+  {
+    title: "Calidad",
+    text: "Buscamos la excelencia en cada procedimiento.",
+  },
+  {
+    title: "Empatía",
+    text: "Tratamos a cada paciente con respeto, sensibilidad y calidez humana.",
+  },
+  {
+    title: "Profesionalismo",
+    text: "Nos mantenemos en constante actualización para ofrecer mejores alternativas de atención.",
   },
 ];
 

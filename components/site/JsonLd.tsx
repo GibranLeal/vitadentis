@@ -4,8 +4,8 @@ export function DentistJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Dentist",
-    name: "Vita Dentis",
-    slogan: "La vitalidad de tu sonrisa",
+    name: "VitaDentis",
+    slogan: "Sonrisas saludables, vidas más felices.",
     url: siteUrl,
     image: `${siteUrl}/marca/consultorio.webp`,
     telephone: phone.tel,

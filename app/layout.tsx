@@ -26,16 +26,20 @@ const plex = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vitadentis.mx"),
   title: {
-    default: "Dentista en Metepec | Vita Dentis",
-    template: "%s | Vita Dentis",
+    default: "Dentista en Metepec | VitaDentis",
+    template: "%s | VitaDentis",
   },
   description:
-    "Odontología integral y estética en Metepec. El Dr. David Romero Morales y su equipo explican cada paso. Agenda tu cita en línea.",
-  applicationName: "Vita Dentis",
+    "VitaDentis, consultorio dental. Sonrisas saludables, vidas más felices. Atención personalizada, prevención y tratamientos de calidad en Metepec.",
+  applicationName: "VitaDentis",
+  icons: {
+    icon: "/marca/favicon.png",
+    apple: "/marca/favicon.png",
+  },
   openGraph: {
     type: "website",
     locale: "es_MX",
-    siteName: "Vita Dentis",
+    siteName: "VitaDentis",
     images: [
       {
         url: "/marca/compartir.png",

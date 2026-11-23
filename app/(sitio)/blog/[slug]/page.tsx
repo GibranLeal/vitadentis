@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ShareBar } from "@/components/blog/ShareBar";
-import { btnPrimary } from "@/components/site/styles";
+import { btnLight } from "@/components/site/styles";
 import { formatDate } from "@/lib/format";
 import { getPost, posts } from "@/lib/posts";
 import { siteUrl } from "@/lib/site";
@@ -27,7 +28,15 @@ export async function generateMetadata(
       title: post.title,
       description: post.description,
       url: `/blog/${post.slug}`,
-      images: [{ url: "/marca/compartir.png", width: 1200, height: 1200, alt: "Vita Dentis" }],
+      images: post.cover
+        ? [{ url: post.cover, width: 1024, height: 755, alt: post.title, type: "image/jpeg" }]
+        : [{ url: "/marca/compartir.png", width: 1200, height: 1200, alt: "VitaDentis" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [post.cover ?? "/marca/compartir.png"],
     },
   };
 }
@@ -50,6 +59,7 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
     "@type": "Article",
     headline: post.title,
     datePublished: post.date,
+    image: post.cover ? `${siteUrl}${post.cover}` : `${siteUrl}/marca/compartir.png`,
     description: post.description,
     author: { "@type": "Organization", name: "Vita Dentis" },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
@@ -68,6 +78,11 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
       <p className="mt-4 font-mono text-xs tracking-wide text-ink">
         {formatDate(post.date)} · {post.readingMinutes} min de lectura
       </p>
+      {post.cover ? (
+        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
+          <Image src={post.cover} alt="Recepción de VitaDentis" fill className="object-cover" sizes="768px" />
+        </div>
+      ) : null}
       <div className="mt-10 space-y-5 text-lg leading-relaxed text-ink">
         {post.blocks.map((block, index) => {
           if (block.type === "h2") {
@@ -100,29 +115,31 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
         <ShareBar title={post.title} slug={post.slug} />
       </div>
       <div className="mt-12 rounded-[28px] bg-navy p-6 text-white">
-        <h2 className="font-display text-2xl font-bold">¿Lo vemos en consulta?</h2>
+        <h2 className="font-display text-2xl font-bold">¿Te vemos en consulta?</h2>
         <p className="mt-2 text-white/80">
           Agenda una valoración en Metepec. Si ya sabes el motivo, elige el servicio en el formulario.
         </p>
         <Link
           href={post.service ? `/agendar?servicio=${post.service}` : "/agendar"}
-          className={`${btnPrimary} mt-5 bg-white text-navy hover:bg-aqua-light`}
+          className={`${btnLight} mt-5`}
         >
           Agendar cita
         </Link>
       </div>
-      <div className="mt-12">
-        <h2 className="font-display text-xl font-bold">También puede interesarte</h2>
-        <ul className="mt-4 space-y-3">
-          {related.map((item) => (
-            <li key={item.slug}>
-              <Link className="text-purple underline-offset-4 hover:underline" href={`/blog/${item.slug}`}>
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {related.length > 0 ? (
+        <div className="mt-12">
+          <h2 className="font-display text-xl font-bold">También puede interesarte</h2>
+          <ul className="mt-4 space-y-3">
+            {related.map((item) => (
+              <li key={item.slug}>
+                <Link className="text-purple underline-offset-4 hover:underline" href={`/blog/${item.slug}`}>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </article>
   );
 }

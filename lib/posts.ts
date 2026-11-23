@@ -14,6 +14,7 @@ export type Post = {
   date: string;
   readingMinutes: number;
   excerpt: string;
+  cover?: string;
   service?: string;
   blocks: Block[];
 };
@@ -26,22 +27,23 @@ export const categories: Array<"Todas" | Category> = [
   "Consejos",
 ];
 
-export const posts: Post[] = [
+const library: Post[] = [
   {
     slug: "bienvenido-a-vita-dentis",
-    title: "Bienvenido a Vita Dentis: cómo cuidamos tu sonrisa en Metepec",
+    title: "Así cuidamos tu sonrisa",
     description:
-      "Conoce al consultorio Vita Dentis en Metepec, al Dr. David Romero Morales y qué puedes esperar en tu primera cita.",
+      "Conoce al consultorio VitaDentis en Metepec, al Dr. David Romero Morales y qué puedes esperar en tu primera cita.",
     category: "Consejos",
     date: "2026-10-06",
     readingMinutes: 5,
     excerpt:
       "Dos consultorios, un mismo trato: explicarte con calma y cuidar a toda la familia.",
+    cover: "/blog/recepcion-vitadentis.jpg",
     service: "valoracion",
     blocks: [
       {
         type: "p",
-        text: "Vita Dentis es un consultorio de odontología integral y estética en Metepec. El lema es simple: la vitalidad de tu sonrisa. Detrás de esa frase está el Dr. David Romero Morales, cirujano dentista con cédula profesional 9982906, y el equipo que lo acompaña en cada cita.",
+        text: "VitaDentis es un consultorio dental en Metepec comprometido con la salud bucal y el bienestar de cada paciente. El lema es simple: sonrisas saludables, vidas más felices. Detrás de esa frase está el Dr. David Romero Morales, cirujano dentista con cédula profesional 9982906, y el equipo que lo acompaña en cada cita.",
       },
       {
         type: "p",
@@ -290,6 +292,8 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+export const posts = library.filter((post) => post.slug === "bienvenido-a-vita-dentis");
 
 export function getPost(slug: string) {
   return posts.find((post) => post.slug === slug);

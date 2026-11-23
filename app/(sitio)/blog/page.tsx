@@ -20,6 +20,7 @@ export default function BlogPage() {
       category: post.category,
       date: post.date,
       readingMinutes: post.readingMinutes,
+      cover: post.cover,
     }));
 
   return (
@@ -27,7 +28,7 @@ export default function BlogPage() {
       <PageHero
         eyebrow="Blog"
         title="Ideas claras para cuidar tu boca"
-        lede="Textos cortos sobre encías, fiestas, revisiones y el miedo a la primera cita. No sustituyen una valoración."
+        lede="Conoce VitaDentis y qué puedes esperar en tu primera cita. No sustituye una valoración."
       />
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <BlogBrowser posts={cards} />

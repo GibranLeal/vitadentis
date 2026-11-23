@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BlogCard } from "@/components/blog/BlogCard";
 import { BiomexShortcode } from "@/components/site/BiomexShortcode";
 import { DentistJsonLd } from "@/components/site/JsonLd";
 import { OfficeCard } from "@/components/site/OfficeCard";
 import { IconCalendar, ServiceGlyph } from "@/components/site/Icons";
 import { btnGhost, btnLight, btnLine, btnPrimary } from "@/components/site/styles";
-import { formatDate } from "@/lib/format";
 import { latestPosts } from "@/lib/posts";
 import { featuredServices } from "@/lib/services";
-import { doctor, hours, offices, phone, promos, ranking, reasons, whatsappLink } from "@/lib/site";
+import { about, doctor, hours, offices, phone, promos, ranking, reasons, whatsappLink } from "@/lib/site";
 
 export function HomePage() {
   const articles = latestPosts(3);
@@ -20,15 +20,15 @@ export function HomePage() {
         <div className="pointer-events-none absolute -left-16 top-24 h-64 w-64 rounded-full bg-aqua-light/25 blur-3xl" />
         <div className="relative z-30 mx-auto max-w-6xl px-5 pt-28 xl:min-h-[40rem] xl:pt-32">
           <div className="max-w-xl xl:max-w-md xl:pb-28">
-            <p className="eyebrow text-aqua-light">Metepec · Estado de México</p>
+            <p className="eyebrow text-aqua-light">Consultorio dental</p>
             <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] text-white sm:text-5xl xl:text-6xl">
-              Bienvenidos a Vita Dentis
+              VitaDentis
             </h1>
             <p className="mt-3 font-display text-2xl font-light text-aqua-light md:text-3xl xl:text-4xl">
-              La vitalidad de tu sonrisa
+              Sonrisas saludables, vidas más felices.
             </p>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-              Odontología integral y estética. Atención cercana, explicaciones claras y tratamientos para toda la familia.
+              Salud dental, confianza y bienestar en cada sonrisa.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/agendar" className={btnLight}>
@@ -60,11 +60,12 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
-        <p className="eyebrow text-purple">Por qué elegirnos</p>
+        <p className="eyebrow text-purple">Qué ofrecemos</p>
         <h2 className="mt-3 max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight md:text-5xl">
-          Un consultorio que se toma el tiempo de explicarte
+          Atención odontológica integral
         </h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <p className="mt-5 max-w-3xl text-lg leading-relaxed text-ink">{about.offerLead}</p>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((reason, index) => (
             <article key={reason.title} className="rounded-[28px] border border-line bg-white p-6">
               <p className="font-mono text-sm text-aqua">0{index + 1}</p>
@@ -212,18 +213,16 @@ export function HomePage() {
               Ir al blog
             </Link>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((post) => (
-              <article key={post.slug} className="flex flex-col rounded-[28px] bg-canvas p-6">
-                <p className="eyebrow text-purple">{post.category}</p>
-                <h3 className="mt-4 font-display text-2xl font-bold leading-tight">
-                  <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                </h3>
-                <p className="mt-3 flex-1 text-ink">{post.excerpt}</p>
-                <p className="mt-5 font-mono text-xs tracking-wide text-ink">
-                  {formatDate(post.date)} · {post.readingMinutes} min
-                </p>
-              </article>
+              <BlogCard
+                key={post.slug}
+                slug={post.slug}
+                title={post.title}
+                category={post.category}
+                date={post.date}
+                cover={post.cover}
+              />
             ))}
           </div>
         </div>
