@@ -4,10 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ShareBar } from "@/components/blog/ShareBar";
-import { btnLight } from "@/components/site/styles";
+import { btnGhost, btnLight } from "@/components/site/styles";
 import { formatDate } from "@/lib/format";
 import { getPost, posts } from "@/lib/posts";
-import { siteUrl } from "@/lib/site";
+import { siteUrl, whatsappLink } from "@/lib/site";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -19,22 +19,31 @@ export async function generateMetadata(
   const { slug } = await props.params;
   const post = getPost(slug);
   if (!post) return {};
+  const title = post.seoTitle ?? post.title;
   return {
-    title: post.title,
+    title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      title: post.title,
+      title,
       description: post.description,
       url: `/blog/${post.slug}`,
       images: post.cover
-        ? [{ url: post.cover, width: 1024, height: 755, alt: post.title, type: "image/jpeg" }]
+        ? [
+            {
+              url: post.cover,
+              width: post.coverWidth ?? 1024,
+              height: post.coverHeight ?? 755,
+              alt: post.coverAlt ?? title,
+              type: "image/jpeg",
+            },
+          ]
         : [{ url: "/marca/compartir.png", width: 1200, height: 1200, alt: "VitaDentis" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title,
       description: post.description,
       images: [post.cover ?? "/marca/compartir.png"],
     },
@@ -64,6 +73,17 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
     author: { "@type": "Organization", name: "Vita Dentis" },
     mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
   };
+  const faqSchema = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
 
   return (
     <article className="mx-auto max-w-3xl px-5 pb-20 pt-28 md:pt-36">
@@ -71,6 +91,12 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      {faqSchema ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      ) : null}
       <p className="eyebrow text-purple">{post.category}</p>
       <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight md:text-5xl">
         {post.title}
@@ -80,7 +106,13 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
       </p>
       {post.cover ? (
         <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
-          <Image src={post.cover} alt="Recepción de VitaDentis" fill className="object-cover" sizes="768px" />
+          <Image
+            src={post.cover}
+            alt={post.coverAlt ?? post.title}
+            fill
+            className="object-cover"
+            sizes="768px"
+          />
         </div>
       ) : null}
       <div className="mt-10 space-y-5 text-lg leading-relaxed text-ink">
@@ -110,6 +142,19 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
           }
           return <p key={index}>{block.text}</p>;
         })}
+        {post.faqs?.length ? (
+          <section className="pt-4">
+            <h2 className="font-display text-2xl font-bold text-navy">Preguntas frecuentes</h2>
+            <div className="mt-5 space-y-5">
+              {post.faqs.map((faq) => (
+                <div key={faq.question}>
+                  <h3 className="font-display text-xl font-bold text-navy">{faq.question}</h3>
+                  <p className="mt-2">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
       <div className="mt-10">
         <ShareBar title={post.title} slug={post.slug} />
@@ -119,12 +164,22 @@ async function Article({ params }: { params: Promise<{ slug: string }> }) {
         <p className="mt-2 text-white/80">
           Agenda una valoración en Metepec. Si ya sabes el motivo, elige el servicio en el formulario.
         </p>
-        <Link
-          href={post.service ? `/agendar?servicio=${post.service}` : "/agendar"}
-          className={`${btnLight} mt-5`}
-        >
-          Agendar cita
-        </Link>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link
+            href={post.service ? `/agendar?servicio=${post.service}` : "/agendar"}
+            className={btnLight}
+          >
+            Agendar cita
+          </Link>
+          <a
+            href={whatsappLink("Hola, quiero agendar una valoración en Vita Dentis.")}
+            className={btnGhost}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </div>
       </div>
       {related.length > 0 ? (
         <div className="mt-12">

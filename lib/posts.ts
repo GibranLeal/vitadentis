@@ -9,13 +9,18 @@ export type Block =
 export type Post = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   category: Category;
   date: string;
   readingMinutes: number;
   excerpt: string;
   cover?: string;
+  coverAlt?: string;
+  coverWidth?: number;
+  coverHeight?: number;
   service?: string;
+  faqs?: Array<{ question: string; answer: string }>;
   blocks: Block[];
 };
 
@@ -39,6 +44,7 @@ const library: Post[] = [
     excerpt:
       "Dos consultorios, un mismo trato: explicarte con calma y cuidar a toda la familia.",
     cover: "/blog/recepcion-vitadentis.jpg",
+    coverAlt: "Recepción de VitaDentis",
     service: "valoracion",
     blocks: [
       {
@@ -77,6 +83,128 @@ const library: Post[] = [
       {
         type: "note",
         text: "Este texto presenta al consultorio. No sustituye una revisión. Si tienes dolor, hinchazón o un golpe reciente, lo más útil es una cita, no un artículo.",
+      },
+    ],
+  },
+  {
+    slug: "sensibilidad-dental",
+    title: "Sensibilidad dental: por qué te duele con lo frío y cómo evitarlo",
+    seoTitle: "Sensibilidad dental: causas y cómo evitarla",
+    description:
+      "¿Sientes un piquete al tomar algo frío? Conoce las causas de la sensibilidad dental, cómo cuidarte en casa y cuándo acudir al dentista en Metepec.",
+    category: "Prevención",
+    date: "2026-11-27",
+    readingMinutes: 4,
+    excerpt:
+      "Ese piquete con lo frío tiene causa. Entre más pronto se revisa, más sencillo suele ser el tratamiento.",
+    cover: "/blog/portada-blog-sensibilidad.jpg",
+    coverAlt: "Paciente con sensibilidad dental al tomar agua fría",
+    coverWidth: 1024,
+    coverHeight: 571,
+    service: "valoracion",
+    faqs: [
+      {
+        question: "¿La sensibilidad dental es normal?",
+        answer:
+          "Es común, pero no es normal vivir con ella. Es una señal de que algo en el esmalte o en la encía necesita atención.",
+      },
+      {
+        question: "¿Se quita sola?",
+        answer:
+          "Si fue por un tratamiento reciente, sí, en pocos días. Si es por desgaste o encías retraídas, necesita cuidados o tratamiento.",
+      },
+      {
+        question: "¿La pasta para dientes sensibles funciona?",
+        answer:
+          "Sí, en casos leves. Ayuda a bloquear los conductos de la dentina, pero no corrige la causa si hay caries o un problema de encía.",
+      },
+      {
+        question: "¿El blanqueamiento causa sensibilidad?",
+        answer:
+          "Puede causar sensibilidad temporal. Un blanqueamiento supervisado por el dentista controla la concentración y protege los dientes.",
+      },
+    ],
+    blocks: [
+      {
+        type: "note",
+        text: "“Cuando tomo algo frío siento un piquete.”",
+      },
+      {
+        type: "p",
+        text: "Si esta frase te suena conocida, no eres el único. La sensibilidad dental es una de las molestias más comunes en el consultorio. Tiene solución, y entre más pronto se atiende, más sencillo suele ser el tratamiento.",
+      },
+      {
+        type: "h2",
+        text: "Qué es la sensibilidad dental",
+      },
+      {
+        type: "p",
+        text: "Los dientes están protegidos por el esmalte, una capa dura que cubre la corona, y por la encía, que cubre la raíz. Debajo está la dentina, un tejido con pequeños conductos que llegan hasta el nervio.",
+      },
+      {
+        type: "p",
+        text: "Cuando el esmalte se desgasta o la encía se retrae, la dentina queda expuesta. Entonces el frío, el calor, lo dulce o lo ácido llegan más fácil al nervio y aparece ese dolor agudo y breve.",
+      },
+      {
+        type: "h2",
+        text: "Las causas más comunes",
+      },
+      {
+        type: "ul",
+        items: [
+          "Cepillarse con mucha fuerza. Un cepillo duro o movimientos bruscos desgastan el esmalte y lastiman la encía.",
+          "Encías retraídas. Por inflamación, enfermedad periodontal o cepillado agresivo, la raíz queda al descubierto.",
+          "Apretar o rechinar los dientes. El bruxismo desgasta el esmalte, sobre todo de noche.",
+          "Alimentos y bebidas ácidas. Refrescos, cítricos, bebidas energéticas o vino, consumidos con frecuencia.",
+          "Caries o dientes fracturados. Una caries que empieza puede manifestarse primero como sensibilidad.",
+          "Blanqueadores sin supervisión. Algunos productos pueden irritar el diente.",
+          "Después de un tratamiento. Una limpieza o una resina pueden causar sensibilidad temporal, que suele ceder en pocos días.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Señales de alerta",
+      },
+      {
+        type: "p",
+        text: "La sensibilidad leve y ocasional puede mejorar con cuidados en casa. Conviene pedir valoración si el dolor dura más de unos segundos después de algo frío o caliente, si la molestia aparece siempre en el mismo diente o si duele al morder. También si el dolor aparece sin haber comido, si las encías sangran, se ven rojas o se retraen, o si la sensibilidad no mejora después de dos o tres semanas. Esas señales pueden indicar una caries, una fractura o un problema de encía.",
+      },
+      {
+        type: "h2",
+        text: "Cuidados en casa",
+      },
+      {
+        type: "ul",
+        items: [
+          "Usa todos los días una pasta para dientes sensibles. En casos leves, el cambio se nota en dos a cuatro semanas.",
+          "Cambia a un cepillo de cerdas suaves y cepíllate con movimientos suaves durante dos minutos.",
+          "Después de algo ácido, espera unos 30 minutos antes de cepillarte para no desgastar el esmalte.",
+          "Reduce refrescos y bebidas ácidas. Si los tomas, usa popote y enjuágate con agua después.",
+          "Usa hilo dental a diario para cuidar la encía y evitar que se retraiga.",
+          "Si aprietas los dientes, coméntalo en la cita. Una guarda a la medida protege el esmalte mientras duermes.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Cómo lo revisamos en VitaDentis",
+      },
+      {
+        type: "p",
+        text: "En la valoración vemos el origen de la sensibilidad: desgaste, encía, caries o bruxismo. Según la causa, el tratamiento puede incluir lo siguiente.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Aplicación de barniz o flúor que protege la dentina expuesta.",
+          "Resinas para cubrir zonas desgastadas o caries pequeñas.",
+          "Limpieza profesional y tratamiento de encías.",
+          "Guarda nocturna si aprietas los dientes.",
+          "En casos avanzados, tratamiento de conducto.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Te explicamos cada paso y vamos a tu ritmo. Si sientes un piquete con lo frío, no esperes a que se haga más grande. Agenda una valoración en Metepec.",
       },
     ],
   },
@@ -293,7 +421,9 @@ const library: Post[] = [
   },
 ];
 
-export const posts = library.filter((post) => post.slug === "bienvenido-a-vita-dentis");
+export const posts = library.filter(
+  (post) => post.slug === "bienvenido-a-vita-dentis" || post.slug === "sensibilidad-dental",
+);
 
 export function getPost(slug: string) {
   return posts.find((post) => post.slug === slug);

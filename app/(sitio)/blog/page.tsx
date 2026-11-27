@@ -28,7 +28,7 @@ export default function BlogPage() {
       <PageHero
         eyebrow="Blog"
         title="Ideas claras para cuidar tu boca"
-        lede="Conoce VitaDentis y qué puedes esperar en tu primera cita. No sustituye una valoración."
+        lede="Prevención y la primera cita, explicadas con calma. Ningún artículo sustituye una valoración."
       />
       <section className="mx-auto max-w-6xl px-5 py-16 md:py-24">
         <BlogBrowser posts={cards} />
